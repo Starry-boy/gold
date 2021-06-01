@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jiaxc.gold.base.log.mapper.ApiLogMapper">
+  <resultMap id="BaseResultMap" type="com.jiaxc.gold.base.log.model.po.ApiLog">
+    <!--@mbg.generated-->
+    <!--@Table api_log-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="ip" jdbcType="VARCHAR" property="ip" />
+    <result column="os" jdbcType="VARCHAR" property="os" />
+    <result column="brower" jdbcType="VARCHAR" property="brower" />
+    <result column="option_type" jdbcType="VARCHAR" property="optionType" />
+    <result column="success" jdbcType="BOOLEAN" property="success" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="request_time" jdbcType="TIMESTAMP" property="requestTime" />
+    <result column="response_time" jdbcType="TIMESTAMP" property="responseTime" />
+    <result column="desc" jdbcType="VARCHAR" property="desc" />
+    <result column="elapsed_time" jdbcType="BIGINT" property="elapsedTime" />
+    <result column="request_args" jdbcType="VARCHAR" property="requestArgs" />
+    <result column="response_result" jdbcType="LONGVARCHAR" property="responseResult" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, user_id, ip, os, brower, option_type, success, code, request_time, response_time, 
+    `desc`, elapsed_time, request_args, response_result, create_time
+  </sql>
+  <update id="updateBatch" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update api_log
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="user_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.userId,jdbcType=BIGINT}
+        </foreach>
+      </trim>
+      <trim prefix="ip = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.ip,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="os = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.os,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="brower = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.brower,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="option_type = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.optionType,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="success = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.success,jdbcType=BOOLEAN}
+        </foreach>
+      </trim>
+      <trim prefix="code = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.code,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="request_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.requestTime,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="response_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.responseTime,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+      <trim prefix="`desc` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.desc,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="elapsed_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.elapsedTime,jdbcType=BIGINT}
+        </foreach>
+      </trim>
+      <trim prefix="request_args = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.requestArgs,jdbcType=VARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="response_result = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.responseResult,jdbcType=LONGVARCHAR}
+        </foreach>
+      </trim>
+      <trim prefix="create_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          when id = #{item.id,jdbcType=BIGINT} then #{item.createTime,jdbcType=TIMESTAMP}
+        </foreach>
+      </trim>
+    </trim>
+    where id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id,jdbcType=BIGINT}
+    </foreach>
+  </update>
+  <update id="updateBatchSelective" parameterType="java.util.List">
+    <!--@mbg.generated-->
+    update api_log
+    <trim prefix="set" suffixOverrides=",">
+      <trim prefix="user_id = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.userId != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.userId,jdbcType=BIGINT}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="ip = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.ip != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.ip,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="os = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.os != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.os,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="brower = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.brower != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.brower,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="option_type = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.optionType != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.optionType,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="success = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.success != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.success,jdbcType=BOOLEAN}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="code = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.code != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.code,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="request_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.requestTime != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.requestTime,jdbcType=TIMESTAMP}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="response_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.responseTime != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.responseTime,jdbcType=TIMESTAMP}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="`desc` = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.desc != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.desc,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="elapsed_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.elapsedTime != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.elapsedTime,jdbcType=BIGINT}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="request_args = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.requestArgs != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.requestArgs,jdbcType=VARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="response_result = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.responseResult != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.responseResult,jdbcType=LONGVARCHAR}
+          </if>
+        </foreach>
+      </trim>
+      <trim prefix="create_time = case" suffix="end,">
+        <foreach collection="list" index="index" item="item">
+          <if test="item.createTime != null">
+            when id = #{item.id,jdbcType=BIGINT} then #{item.createTime,jdbcType=TIMESTAMP}
+          </if>
+        </foreach>
+      </trim>
+    </trim>
+    where id in
+    <foreach close=")" collection="list" item="item" open="(" separator=", ">
+      #{item.id,jdbcType=BIGINT}
+    </foreach>
+  </update>
+  <insert id="batchInsert" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into api_log
+    (user_id, ip, os, brower, option_type, success, code, request_time, response_time, 
+      `desc`, elapsed_time, request_args, response_result, create_time)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.userId,jdbcType=BIGINT}, #{item.ip,jdbcType=VARCHAR}, #{item.os,jdbcType=VARCHAR}, 
+        #{item.brower,jdbcType=VARCHAR}, #{item.optionType,jdbcType=VARCHAR}, #{item.success,jdbcType=BOOLEAN}, 
+        #{item.code,jdbcType=VARCHAR}, #{item.requestTime,jdbcType=TIMESTAMP}, #{item.responseTime,jdbcType=TIMESTAMP}, 
+        #{item.desc,jdbcType=VARCHAR}, #{item.elapsedTime,jdbcType=BIGINT}, #{item.requestArgs,jdbcType=VARCHAR}, 
+        #{item.responseResult,jdbcType=LONGVARCHAR}, #{item.createTime,jdbcType=TIMESTAMP}
+        )
+    </foreach>
+  </insert>
+</mapper>
