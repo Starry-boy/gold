@@ -13,4 +13,15 @@
     <artifactId>gold-cache-starter</artifactId>
 
 
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-redis</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.jiaxc</groupId>
+            <artifactId>gold-common</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 </project>
